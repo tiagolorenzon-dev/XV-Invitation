@@ -54,18 +54,18 @@ const config: InviteConfig = {
   age: 15,
   date: "2025-05-31",
   hour: "21:00",
-  venue: "Jano`s Darwin",
+  venue: "Jano`s Darwin 1",
   address: "Cnel. Niceto Vega 5350, CABA",
   googleMapsUrl: "https://maps.app.goo.gl/CmFxPBvRhF7dLteXA",
   googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.61340013112!2d-58.436747600000004!3d-34.5886475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5e85c952bc1%3A0x3b019e82cc9af99c!2sJano&#39;s%20Darwin!5e0!3m2!1ses!2sar!4v1747608167807!5m2!1ses!2sar",
   rsvpFormUrl: "https://forms.gle/PXbLgThDCxF7pgpw7",
   playlistFormUrl: "https://forms.gle/Gx9GfxVVD2BfYBSo8",
-  instagramHandle: "lolugarciaa",
-  instagramUrl: "https://www.instagram.com/lolugarciaa",
+  instagramHandle: "mialorenzon13",
+  instagramUrl: "https://www.instagram.com/mialorenzon13",
   gift: {
-    cbu: "0170105640000002934486",
+    cbu: "00000000000000000",
     alias: "PELA.LOLA.VELEZ",
-    bank: "BBVA",
+    bank: "Mercado Pago",
     description: "El mejor regalo es que vengas, pero si deseás regalarme algo, podés colaborar con mis sueños y anhelos✨ ¡Muchas gracias!"
   },
   textos: {
