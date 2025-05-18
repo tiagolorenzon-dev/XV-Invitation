@@ -57,7 +57,7 @@ const config: InviteConfig = {
   venue: "Jano`s Darwin 1",
   address: "Cnel. Niceto Vega 5350, CABA",
   googleMapsUrl: "https://maps.app.goo.gl/CmFxPBvRhF7dLteXA",
-  googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.1167460091387!2d-58.436747599999996!3d-34.5886475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5e85c952bc1%3A0x3b019e82cc9af99c!2sJano&#39;s%20Darwin!5e0!3m2!1ses-419!2sar!4v1716066490760!5m2!1ses-419!2sar",
+  googleMapsEmbed: "https://maps.google.com/maps?q=Jano's Darwin, Buenos Aires&t=&z=15&ie=UTF8&iwloc=&output=embed",
   rsvpFormUrl: "https://forms.gle/PXbLgThDCxF7pgpw7",
   playlistFormUrl: "https://forms.gle/Gx9GfxVVD2BfYBSo8",
   instagramHandle: "mialorenzon13",
