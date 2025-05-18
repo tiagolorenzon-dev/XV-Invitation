@@ -1,10 +1,15 @@
 import './index.css';
 import React, { useEffect, useRef, useState } from 'react';
+import config from './invite.config';
 
-const PARTY_DATE = new Date('2025-06-14T21:00:00'); // local time
+function getPartyDateTime(): Date {
+  // config.date is 'YYYY-MM-DD', config.hour is 'HH:mm'
+  return new Date(`${config.date}T${config.hour}`);
+}
 
 function getCountdownParts() {
   const now = new Date();
+  const PARTY_DATE = getPartyDateTime();
   const diff = PARTY_DATE.getTime() - now.getTime();
   if (diff <= 0) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
@@ -18,14 +23,13 @@ function getCountdownParts() {
 
 function App() {
   const [countdown, setCountdown] = useState(getCountdownParts());
+  const sectionRefs = useRef<Array<HTMLElement | null>>([]);
 
   useEffect(() => {
     const interval = setInterval(() => setCountdown(getCountdownParts()), 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // Basic fade-in on scroll (intersection observer)
-  const sectionRefs = useRef([]);
   useEffect(() => {
     if (typeof window !== 'undefined' && window.IntersectionObserver) {
       const observer = new window.IntersectionObserver((entries) => {
@@ -43,31 +47,31 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[var(--main-bg)] font-mont">
-      {/* 1. Hero / Invitation Card */}
+      {/* Hero Section with Floral BG */}
       <section
-        ref={el => sectionRefs.current[0] = el}
+        ref={el => { sectionRefs.current[0] = el as HTMLElement | null }}
         className="flex flex-col justify-center items-center min-h-[60vh] md:min-h-[80vh] relative px-2 overflow-hidden"
       >
-        <div className="hero-floral-bg absolute inset-0 z-0 pointer-events-none" />
+        <div className="hero-floral-bg absolute inset-0 z-0 pointer-events-none" style={{backgroundImage: `url('${config.images.floralBg}')`}} />
         <div className="bg-white border-4 border-[var(--primary)] rounded-xl md:p-10 p-4 shadow-sm relative z-[1] w-full max-w-[430px] sm:rounded-md">
           <div className="text-center">
-            <div className="text-sm mb-3 tracking-widest" style={{ color: '#847c74' }}>15 AÑOS</div>
-            <h1 className="md:text-6xl text-3xl font-semibold mb-2 text-[var(--footer-dark)] tracking-wider">LOLA</h1>
-            <div className="uppercase md:text-md text-sm tracking-widest" style={{ color: '#979696' }}>Jun &nbsp; 14 &nbsp; 2025</div>
+            <div className="text-sm mb-3 tracking-widest" style={{ color: '#847c74' }}>{`${config.age} AÑOS`}</div>
+            <h1 className="md:text-6xl text-3xl font-semibold mb-2 text-[var(--footer-dark)] tracking-wider">{config.name.toUpperCase()}</h1>
+            <div className="uppercase md:text-md text-sm tracking-widest" style={{ color: '#979696' }}>{new Date(config.date).toLocaleString('es-AR', {month:'short', day: '2-digit'}).replace('.','').toUpperCase()} &nbsp; {parseInt(config.date.split('-')[2],10)} &nbsp; {config.date.split('-')[0]}</div>
           </div>
         </div>
       </section>
-      {/* 2. Countdown Section */}
+      {/* Countdown Section */}
       <section
-        ref={el => sectionRefs.current[1] = el}
+        ref={el => { sectionRefs.current[1] = el as HTMLElement | null }}
         className="bg-[var(--primary)] py-8 md:py-10 text-white text-center"
       >
         <div className="mb-2 px-2 md:px-0 text-base md:text-lg" style={{ opacity: 0.7 }}>
-          ¡Te espero para festejar este gran momento de mi vida!
+          {config.textos.countdownInvitation}
         </div>
         {
           countdown.expired ? (
-            <div className="md:text-2xl text-lg font-bold">¡Es hoy!</div>
+            <div className="md:text-2xl text-lg font-bold">{config.textos.countdownToday}</div>
           ) : (
             <>
               <div className="flex flex-row justify-center gap-2 md:gap-3 items-baseline w-full">
@@ -86,16 +90,17 @@ function App() {
           )
         }
       </section>
-      {/* 3. Google Maps Embed Section */}
-      <section ref={el => sectionRefs.current[2] = el} className="py-10 md:py-12 flex flex-col items-center px-2 md:px-0">
+      {/* Location / Google Maps Section */}
+      <section ref={el => { sectionRefs.current[2] = el as HTMLElement | null }} className="py-10 md:py-12 flex flex-col items-center px-2 md:px-0">
         <h3 className="text-lg font-semibold mb-3 text-[var(--footer-dark)] flex items-center gap-2">
-          <img src="https://ext.same-assets.com/4130007303/951057477.svg" alt="Fiesta Icon" className="inline-block w-6 h-6 mr-1" />
-          ¿Dónde es la fiesta?
+          <img src={config.images.fiestaIcon} alt="Fiesta Icon" className="inline-block w-6 h-6 mr-1" />
+          {config.textos.locationTitle}
         </h3>
+        <div className="text-base text-[var(--footer-dark)] mb-2 font-medium">{config.venue}<br/>{config.address}</div>
         <div className="w-full flex justify-center">
           <iframe
             title="Ubicación de la fiesta"
-            src="https://www.google.com/maps?q=Francisco+Bilbao+2928,+CABA&output=embed"
+            src={config.googleMapsEmbed}
             width="100%"
             height="240"
             style={{ border: 0, borderRadius: '16px', maxWidth:'400px', width:'100%' }}
@@ -104,7 +109,7 @@ function App() {
           ></iframe>
         </div>
         <a
-          href="https://maps.app.goo.gl/zSokm6u1SUgpo3uw7"
+          href={config.googleMapsUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-2 underline text-[var(--primary)] text-base"
@@ -112,68 +117,68 @@ function App() {
           Abrir en Google Maps
         </a>
       </section>
-      {/* 4. Confirmation Section */}
-      <section ref={el => sectionRefs.current[3] = el} className="py-12 md:py-16 flex flex-col items-center px-2 md:px-0">
+      {/* RSVP / Confirmation Section */}
+      <section ref={el => { sectionRefs.current[3] = el as HTMLElement | null }} className="py-12 md:py-16 flex flex-col items-center px-2 md:px-0">
         <h2 className="uppercase text-xl font-semibold flex items-center gap-2 pb-2 text-center" style={{ letterSpacing: '2px', color: '#626261' }}>
-          <img src="https://ext.same-assets.com/4130007303/4116460330.svg" alt="Dresscode Icon" className="inline-block w-5 h-5 mr-1" />
-          Confirmación de Asistencia
+          <img src={config.images.dresscodeIcon} alt="Dresscode Icon" className="inline-block w-5 h-5 mr-1" />
+          {config.textos.rsvpTitle}
         </h2>
         <div className="mt-2 mb-6 text-center text-base text-[var(--gray)]">
-          Cuento con tu presencia.<br />¡Confirmá tu asistencia!
+          {config.textos.rsvpSubtitle}
         </div>
         <a
-          href="https://forms.gle/PXbLgThDCxF7pgpw7"
+          href={config.rsvpFormUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="bg-[var(--accent)] px-8 py-3 rounded-full text-white tracking-wider font-semibold shadow transition hover:scale-105 hover:bg-[var(--primary)] w-full max-w-xs text-center"
         >
-          CONFIRMAR ASISTENCIA
+          {config.textos.rsvpButton}
         </a>
       </section>
-      {/* 5. Instagram Section */}
-      <section ref={el => sectionRefs.current[4] = el} className="py-6 md:py-10 flex flex-col items-center px-2 md:px-0">
+      {/* Instagram Section */}
+      <section ref={el => { sectionRefs.current[4] = el as HTMLElement | null }} className="py-6 md:py-10 flex flex-col items-center px-2 md:px-0">
         <a
-          href="https://www.instagram.com/lolugarciaa"
+          href={config.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[var(--primary)] flex flex-col items-center"
         >
-          <img src="https://ext.same-assets.com/4130007303/846481072.svg" alt="Instagram" className="w-10 h-10 md:w-11 md:h-11 mx-auto" />
-          <div className="mt-2 text-[var(--gray)] text-base">@lolugarciaa</div>
+          <img src={config.images.instagramIcon} alt="Instagram" className="w-10 h-10 md:w-11 md:h-11 mx-auto" />
+          <div className="mt-2 text-[var(--gray)] text-base">@{config.instagramHandle}</div>
         </a>
       </section>
-      {/* 6. Playlist/Music Section */}
-      <section ref={el => sectionRefs.current[5] = el} className="py-8 md:py-12 flex flex-col items-center px-2 md:px-0">
-        <img src="https://ext.same-assets.com/4130007303/2060808040.svg" alt="Playlist Icon" className="w-10 h-10 md:w-11 md:h-11" />
+      {/* Playlist/Music Suggestion Section */}
+      <section ref={el => { sectionRefs.current[5] = el as HTMLElement | null }} className="py-8 md:py-12 flex flex-col items-center px-2 md:px-0">
+        <img src={config.images.playlistIcon} alt="Playlist Icon" className="w-10 h-10 md:w-11 md:h-11" />
         <div className="mt-4 text-[var(--footer-dark)] text-center text-base md:text-lg">
-          <p className="mb-2">¡Ayudame sugiriendo las canciones que pensás que no pueden faltar en la fiesta!</p>
+          <p className="mb-2">{config.textos.playlistText}</p>
           <a
-            href="https://forms.gle/Gx9GfxVVD2BfYBSo8"
+            href={config.playlistFormUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="underline text-[var(--primary)]"
           >
-            Sugerir canción
+            {config.textos.playlistButton}
           </a>
         </div>
       </section>
-      {/* 7. Gift Section */}
-      <section ref={el => sectionRefs.current[6] = el} className="bg-[var(--accent)] py-8 md:py-12 flex flex-col items-center px-2 md:px-0 pb-16">
-        <img src="https://ext.same-assets.com/4130007303/2193444332.svg" alt="Gift Icon" className="w-12 h-12 md:w-[48px] md:h-[48px]" />
+      {/* Gift/CBU Section */}
+      <section ref={el => { sectionRefs.current[6] = el as HTMLElement | null }} className="bg-[var(--accent)] py-8 md:py-12 flex flex-col items-center px-2 md:px-0 pb-16">
+        <img src={config.images.giftIcon} alt="Gift Icon" className="w-12 h-12 md:w-[48px] md:h-[48px]" />
         <div className="mt-4 text-[var(--footer-dark)] text-center text-base md:text-lg">
-          El mejor regalo es que vengas,<br />pero si deseás regalarme algo,<br />podés colaborar con mis sueños y anhelos✨<br /><span className="text-sm">¡Muchas gracias!</span><br />
+          {config.gift.description}<br /><span className="text-sm">{config.textos.giftThankYou}</span><br />
           <button
             className="mt-3 underline text-[var(--footer-dark)] w-full max-w-xs py-2"
-            onClick={() => alert('CBU: 0170105640000002934486\nAlias: PELA.LOLA.VELEZ\nBanco BBVA')}
+            onClick={() => alert(`CBU: ${config.gift.cbu}\nAlias: ${config.gift.alias}\nBanco ${config.gift.bank}`)}
           >
-            Ver datos bancarios
+            {config.textos.giftButton}
           </button>
         </div>
       </section>
-      {/* 8. Footer */}
-      <footer ref={el => sectionRefs.current[7] = el} className="w-full bg-[var(--footer-dark)] py-7 text-center text-[#f8f7f7] text-xs">
-        Invitaciones Digitales <a className="underline" href="https://agendalafecha.com" target="_blank" rel="noopener noreferrer">Agendá la Fecha</a> 2025. Todos los derechos reservados<br />
-        <a href="https://www.instagram.com/agendalafecha/" className="text-[#d9bcbe] underline" target="_blank" rel="noopener noreferrer">@agendalafecha</a>
+      {/* Footer */}
+      <footer ref={el => { sectionRefs.current[7] = el as HTMLElement | null }} className="w-full bg-[var(--footer-dark)] py-7 text-center text-[#f8f7f7] text-xs">
+        {config.textos.footer}<br />
+        <a href="https://www.instagram.com/agendalafecha/" className="text-[#d9bcbe] underline" target="_blank" rel="noopener noreferrer">{config.textos.footerInsta}</a>
       </footer>
     </div>
   );
