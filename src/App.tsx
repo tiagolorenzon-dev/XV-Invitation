@@ -178,7 +178,7 @@ function App() {
       {/* Footer */}
       <footer ref={el => { sectionRefs.current[7] = el as HTMLElement | null }} className="w-full bg-[var(--footer-dark)] py-7 text-center text-[#f8f7f7] text-xs">
         {config.textos.footer}<br />
-        <a href="https://www.instagram.com/agendalafecha/" className="text-[#d9bcbe] underline" target="_blank" rel="noopener noreferrer">{config.textos.footerInsta}</a>
+        <a href="https://www.instagram.com/tiagoolorenzon/" className="text-[#d9bcbe] underline" target="_blank" rel="noopener noreferrer">{config.textos.footerInsta}</a>
       </footer>
     </div>
   );
