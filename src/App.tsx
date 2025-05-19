@@ -58,11 +58,11 @@ function App() {
             <div className="text-sm mb-3 tracking-widest" style={{ color: '#847c74' }}>{`${config.age} AÑOS`}</div>
             <h1 className="md:text-6xl text-3xl font-semibold mb-2 text-[var(--footer-dark)] tracking-wider">{config.name.toUpperCase()}</h1>
             <div className="uppercase md:text-md text-sm tracking-widest" style={{ color: '#979696' }}>
-              {new Date(config.date).toLocaleDateString('es-AR', {
+              {new Date(config.date + 'T00:00:00-03:00').toLocaleDateString('es-AR', {
               day: '2-digit',
               month: 'short',
               year: 'numeric'
-              }).replace('.', '').toUpperCase()}
+              })}
 </div>
           </div>
         </div>
