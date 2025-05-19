@@ -106,7 +106,7 @@ function App() {
           {config.venue}<br/>{config.address}
         </div>
         <div className="w-full flex justify-center">
-          <iframe
+          {/* <iframe
             title="Ubicación de la fiesta"
             src={config.googleMapsEmbed}
             width="100%"
@@ -114,16 +114,16 @@ function App() {
             style={{ border: 0, borderRadius: '16px', maxWidth:'400px', width:'100%' }}
             allowFullScreen
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
         <a
           href={config.googleMapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-block px-6 py-2 rounded-full bg-[var(--primary)] text-white font-semibold shadow-md hover:bg-opacity-90 transition"
+          className="bg-white text-[var(--accent)] border border-[var(--accent)] px-8 py-3 rounded-full tracking-wider font-semibold shadow transition hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full max-w-xs text-center"
           >
-           Ver en Google Maps
-          </a>
+          Ver en Google Maps
+        </a>
       </section>
       {/* RSVP / Confirmation Section */}
       <section ref={el => { sectionRefs.current[3] = el as HTMLElement | null }} className="py-12 md:py-16 flex flex-col items-center px-2 md:px-0">
@@ -144,15 +144,30 @@ function App() {
         </a>
       </section>
       {/* Instagram Section */}
-      <section ref={el => { sectionRefs.current[4] = el as HTMLElement | null }} className="py-6 md:py-10 flex flex-col items-center px-2 md:px-0">
+      <section
+        ref={el => { sectionRefs.current[4] = el as HTMLElement | null }}
+        className="py-12 md:py-20 flex flex-col items-center px-4 md:px-0 text-center"
+      >
+        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--footer-dark)] mb-2">¡Seguime en Instagram!</h2>
+        <p className="text-[var(--gray)] mb-6 max-w-md">
+          Compartí tu emoción, mirá fotos y seguí las novedades de la fiesta en mi perfil.
+        </p>
+
+        <img
+          src={config.images.instagramIcon}
+          alt="Instagram"
+          className="w-12 h-12 md:w-14 md:h-14 mb-4"
+        />
+
+        <div className="text-[var(--gray)] text-base mb-4">@{config.instagramHandle}</div>
+
         <a
           href={config.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[var(--primary)] flex flex-col items-center"
+          className="bg-[var(--accent)] px-8 py-3 rounded-full text-white tracking-wider font-semibold shadow transition hover:scale-105 hover:bg-[var(--primary)] w-full max-w-xs"
         >
-          <img src={config.images.instagramIcon} alt="Instagram" className="w-10 h-10 md:w-11 md:h-11 mx-auto" />
-          <div className="mt-2 text-[var(--gray)] text-base">@{config.instagramHandle}</div>
+          Ver en Instagram
         </a>
       </section>
       {/* Playlist/Music Suggestion Section */}
