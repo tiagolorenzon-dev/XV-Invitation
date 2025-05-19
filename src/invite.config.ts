@@ -59,7 +59,7 @@ const config: InviteConfig = {
   googleMapsUrl: "https://maps.app.goo.gl/CmFxPBvRhF7dLteXA",
   googleMapsEmbed: "https://maps.google.com/maps?q=Jano's Darwin, Buenos Aires&t=&z=15&ie=UTF8&iwloc=&output=embed",
   rsvpFormUrl: "https://forms.gle/7VwhiF4XzSZkYpr67",
-  playlistFormUrl: "https://forms.gle/Gx9GfxVVD2BfYBSo8",
+  playlistFormUrl: "https://open.spotify.com/playlist/2rI6ljLAYgVnOFMw1shRDC?si=9NZfk3_uRY2_kVNwYzA6KA&pt=d34e99d09d4b2b71997c8efd047cd741&pi=s3GOSLrzToaKB",
   instagramHandle: "mialorenzon13",
   instagramUrl: "https://www.instagram.com/mialorenzon13",
   gift: {

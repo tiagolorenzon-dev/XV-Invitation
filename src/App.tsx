@@ -60,7 +60,7 @@ function App() {
             <div className="uppercase md:text-md text-sm tracking-widest" style={{ color: '#979696' }}>
               {new Date(config.date + 'T00:00:00-03:00').toLocaleDateString('es-AR', {
               day: '2-digit',
-              month: 'short',
+              month: 'long',
               year: 'numeric'
               })}
 </div>
@@ -126,19 +126,24 @@ function App() {
         </a>
       </section>
       {/* RSVP / Confirmation Section */}
-      <section ref={el => { sectionRefs.current[3] = el as HTMLElement | null }} className="py-12 md:py-16 flex flex-col items-center px-2 md:px-0">
-        <h2 className="uppercase text-xl font-semibold flex items-center gap-2 pb-2 text-center" style={{ letterSpacing: '2px', color: '#626261' }}>
+      <section
+        ref={el => { sectionRefs.current[3] = el as HTMLElement | null }}
+        className="bg-[var(--primary)] text-white py-12 md:py-16 flex flex-col items-center px-2 md:px-0 text-center"
+      >
+        <h2 className="uppercase text-xl font-semibold flex items-center gap-2 pb-2" style={{ letterSpacing: '2px' }}>
           <img src={config.images.dresscodeIcon} alt="Dresscode Icon" className="inline-block w-5 h-5 mr-1" />
           {config.textos.rsvpTitle}
         </h2>
-        <div className="mt-2 mb-6 text-center text-base text-[var(--gray)]">
+
+        <div className="mt-2 mb-6 text-base" style={{ opacity: 0.8 }}>
           {config.textos.rsvpSubtitle}
         </div>
+
         <a
           href={config.rsvpFormUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[var(--accent)] px-8 py-3 rounded-full text-white tracking-wider font-semibold shadow transition hover:scale-105 hover:bg-[var(--primary)] w-full max-w-xs text-center"
+          className="bg-white px-8 py-3 rounded-full text-[var(--accent)] tracking-wider font-semibold shadow transition hover:scale-105 hover:bg-[var(--secondary)] w-full max-w-xs"
         >
           {config.textos.rsvpButton}
         </a>
