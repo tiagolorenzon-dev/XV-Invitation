@@ -102,7 +102,9 @@ function App() {
           <img src={config.images.fiestaIcon} alt="Fiesta Icon" className="inline-block w-6 h-6 mr-1" />
           {config.textos.locationTitle}
         </h3>
-        <div className="text-base text-[var(--footer-dark)] mb-2 font-medium">{config.venue}<br/>{config.address}</div>
+        <div className="text-base text-[var(--footer-dark)] mb-2 font-medium text-center">
+          {config.venue}<br/>{config.address}
+        </div>
         <div className="w-full flex justify-center">
           <iframe
             title="Ubicación de la fiesta"
@@ -118,10 +120,10 @@ function App() {
           href={config.googleMapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 underline text-[var(--primary)] text-base"
-        >
-          Abrir en Google Maps
-        </a>
+          className="mt-4 inline-block px-6 py-2 rounded-full bg-[var(--primary)] text-white font-semibold shadow-md hover:bg-opacity-90 transition"
+          >
+           Ver en Google Maps
+          </a>
       </section>
       {/* RSVP / Confirmation Section */}
       <section ref={el => { sectionRefs.current[3] = el as HTMLElement | null }} className="py-12 md:py-16 flex flex-col items-center px-2 md:px-0">
