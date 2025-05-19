@@ -63,8 +63,8 @@ const config: InviteConfig = {
   instagramHandle: "mialorenzon13",
   instagramUrl: "https://www.instagram.com/mialorenzon13",
   gift: {
-    cbu: "00000000000000000",
-    alias: "PELA.LOLA.VELEZ",
+    cbu: "0000003100061433578137",
+    alias: "mia.lorenzon.mp",
     bank: "Mercado Pago",
     description: "El mejor regalo es que vengas, pero si deseás regalarme algo, podés colaborar con mis sueños y anhelos✨ ¡Muchas gracias!"
   },
