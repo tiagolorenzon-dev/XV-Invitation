@@ -52,7 +52,7 @@ export interface InviteConfig {
 const config: InviteConfig = {
   name: "Mia",
   age: 15,
-  date: "2025-05-31",
+  date: "2025-06-01",
   hour: "21:00",
   venue: "Jano`s Darwin 1",
   address: "Cnel. Niceto Vega 5350, CABA",
