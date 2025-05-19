@@ -98,10 +98,16 @@ function App() {
       </section>
       {/* Location / Google Maps Section */}
       <section ref={el => { sectionRefs.current[2] = el as HTMLElement | null }} className="py-10 md:py-12 flex flex-col items-center px-2 md:px-0">
-        <h3 className="text-lg font-semibold mb-3 text-[var(--footer-dark)] flex items-center gap-2">
-          <img src={config.images.fiestaIcon} alt="Fiesta Icon" className="inline-block w-6 h-6 mr-1" />
-          {config.textos.locationTitle}
-        </h3>
+        <div className="flex flex-col items-center mb-4">
+          <img
+            src={config.images.fiestaIcon}
+            alt="Fiesta Icon"
+            className="w-14 h-14 mb-2"
+          />
+          <h3 className="text-lg font-semibold text-[var(--footer-dark)] text-center">
+            {config.textos.locationTitle}
+          </h3>
+        </div>
         <div className="text-base text-[var(--footer-dark)] mb-2 font-medium text-center">
           {config.venue}<br/>{config.address}
         </div>
@@ -125,25 +131,51 @@ function App() {
           Ver en Google Maps
         </a>
       </section>
-      {/* RSVP / Confirmation Section */}
+      {/* Dress Code Section */}
       <section
         ref={el => { sectionRefs.current[3] = el as HTMLElement | null }}
         className="bg-[var(--primary)] text-white py-12 md:py-16 flex flex-col items-center px-2 md:px-0 text-center"
       >
-        <h2 className="uppercase text-xl font-semibold flex items-center gap-2 pb-2" style={{ letterSpacing: '2px' }}>
-          <img src={config.images.dresscodeIcon} alt="Dresscode Icon" className="inline-block w-5 h-5 mr-1" />
+        <div className="flex flex-col items-center mb-4">
+         <img
+            src={config.images.dresscodeIcon}
+            alt="Dresscode Icon"
+            className="w-20 h-20 mb-2"
+          />
+          <h2 
+          className="
+          text-2xl 
+          md:text-3xl 
+          font-semibold 
+          text-[var(--white)] 
+          mb-2"
+          >
+            ¡Dress Code!
+          </h2>
+        </div>
+        <p className="text-[var(--destructive)] mb-0 max-w-md">
+          Elegante
+        </p>
+      </section>
+      {/* RSVP / Confirmation Section */}
+      <section
+        ref={el => { sectionRefs.current[4] = el as HTMLElement | null }}
+        className="py-12 md:py-20 flex flex-col items-center px-4 md:px-0 text-center"
+      >
+        <div className="flex flex-col items-center mb-4">
+          <h2 className="uppercase text-xl font-semibold flex items-center gap-2 pb-2" style={{ letterSpacing: '2px' }}>
           {config.textos.rsvpTitle}
         </h2>
-
+        </div>
+  
         <div className="mt-2 mb-6 text-base" style={{ opacity: 0.8 }}>
           {config.textos.rsvpSubtitle}
         </div>
-
         <a
           href={config.rsvpFormUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white px-8 py-3 rounded-full text-[var(--accent)] tracking-wider font-semibold shadow transition hover:scale-105 hover:bg-[var(--secondary)] w-full max-w-xs"
+          className="bg-white text-[var(--accent)] border border-[var(--accent)] px-8 py-3 rounded-full tracking-wider font-semibold shadow transition hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full max-w-xs text-center"
         >
           {config.textos.rsvpButton}
         </a>
@@ -153,20 +185,19 @@ function App() {
         ref={el => { sectionRefs.current[4] = el as HTMLElement | null }}
         className="py-12 md:py-20 flex flex-col items-center px-4 md:px-0 text-center"
       >
-        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--footer-dark)] mb-2">¡Seguime en Instagram!</h2>
-        <p className="text-[var(--gray)] mb-6 max-w-md">
-          Compartí tu emoción, mirá fotos y seguí las novedades de la fiesta en mi perfil.
-        </p>
-
-        <img
-          src={config.images.instagramIcon}
-          alt="Instagram"
-          className="w-12 h-12 md:w-14 md:h-14 mb-4"
-        />
-
-        <div className="text-[var(--gray)] text-base mb-4">@{config.instagramHandle}</div>
-
-        <a
+        
+        <div className="flex flex-col items-center mb-4">
+         <img
+            src={config.images.instagramIcon}
+            alt="Instagram"
+            className="w-20 h-20 mb-2"
+          />
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--footer-dark)] mb-2">¡Seguime en Instagram!</h2>
+          <p className="text-[var(--gray)] mb-6 max-w-md">
+            Compartí tu emoción, mirá fotos y seguí las novedades de la fiesta en mi perfil.
+          </p>
+           {/* <div className="text-[var(--gray)] text-base mb-4">@{config.instagramHandle}</div> */}
+          <a
           href={config.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -174,30 +205,49 @@ function App() {
         >
           Ver en Instagram
         </a>
+        </div>       
       </section>
       {/* Playlist/Music Suggestion Section */}
-      <section ref={el => { sectionRefs.current[5] = el as HTMLElement | null }} className="py-8 md:py-12 flex flex-col items-center px-2 md:px-0">
-        <img src={config.images.playlistIcon} alt="Playlist Icon" className="w-10 h-10 md:w-11 md:h-11" />
-        <div className="mt-4 text-[var(--footer-dark)] text-center text-base md:text-lg">
+      <section 
+        ref={el => { sectionRefs.current[5] = el as HTMLElement | null }} 
+        className="py-12 md:py-20 flex flex-col items-center px-4 md:px-0 text-center">
+         <div className="flex flex-col items-center mb-4">
+         <img
+            src={config.images.playlistIcon}
+            alt="Playlist Icon"
+            className="w-20 h-20 mb-2"
+          />
           <p className="mb-2">{config.textos.playlistText}</p>
+           {/* <div className="text-[var(--gray)] text-base mb-4">@{config.instagramHandle}</div> */}
           <a
-            href={config.playlistFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline text-[var(--primary)]"
-          >
-            {config.textos.playlistButton}
-          </a>
-        </div>
+          href={config.playlistFormUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[var(--accent)] px-8 py-3 rounded-full text-white tracking-wider font-semibold shadow transition hover:scale-105 hover:bg-[var(--primary)] w-full max-w-xs"
+        >
+          {config.textos.playlistButton}
+        </a>
+        </div> 
       </section>
       {/* Gift/CBU Section */}
       <section ref={el => { sectionRefs.current[6] = el as HTMLElement | null }} className="bg-[var(--accent)] py-8 md:py-12 flex flex-col items-center px-2 md:px-0 pb-16">
-        <img src={config.images.giftIcon} alt="Gift Icon" className="w-12 h-12 md:w-[48px] md:h-[48px]" />
+        <img 
+          src={config.images.giftIcon} 
+          alt="Gift Icon" 
+          className="w-20 h-20 mb-2"
+        />
         <div className="mt-4 text-[var(--footer-dark)] text-center text-base md:text-lg">
-          {config.gift.description}<br /><span className="text-sm">{config.textos.giftThankYou}</span><br />
+          {config.gift.description}
+          <br />
+          <br />
+          <span className="text-sm">
+            {config.textos.giftThankYou}
+          </span>
+            <br />
+            <br />
           <button
-            className="mt-3 underline text-[var(--footer-dark)] w-full max-w-xs py-2"
-            onClick={() => alert(`CBU: ${config.gift.cbu}\nAlias: ${config.gift.alias}\nBanco ${config.gift.bank}`)}
+            className="bg-white px-8 py-3 rounded-full text-accent tracking-wider font-semibold shadow transition w-full max-w-xs"
+            onClick={() => alert(`CVU: ${config.gift.cbu}\nAlias: ${config.gift.alias}\nBanco: ${config.gift.bank}`)}
           >
             {config.textos.giftButton}
           </button>

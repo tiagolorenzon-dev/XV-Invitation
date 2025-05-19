@@ -66,7 +66,7 @@ const config: InviteConfig = {
     cbu: "0000003100061433578137",
     alias: "mia.lorenzon.mp",
     bank: "Mercado Pago",
-    description: "El mejor regalo es que vengas, pero si deseás regalarme algo, podés colaborar con mis sueños y anhelos✨ ¡Muchas gracias!"
+    description: "El mejor regalo es que vengas, pero si deseás hacerlo, podés colaborar a través de este medio ✨"
   },
   textos: {
     mainSubtitle: "¡Te espero para festejar este gran momento de mi vida!",
