@@ -76,7 +76,7 @@ const config: InviteConfig = {
     countdownToday: "¡Es hoy!",
     countdownInvitation: "¡Te espero para festejar este gran momento de mi vida!",
     dresscodeTitle: "DRESS CODE",
-    dresscode: "Elegante",
+    dresscode: "Elegante, NO Blanco",
     playlistTitle: "¡PLAYLIST!",
     playlistText: "¡Ayudame sugiriendo las canciones que pensás que no pueden faltar en la fiesta!",
     playlistButton: "Sugerir canción",
