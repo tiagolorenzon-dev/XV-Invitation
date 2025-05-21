@@ -154,7 +154,7 @@ function App() {
           </h2>
         </div>
         <p className="text-[var(--destructive)] mb-0 max-w-md">
-          Elegante
+          Elegante, NO Blanco
         </p>
       </section>
       {/* RSVP / Confirmation Section */}
