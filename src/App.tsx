@@ -63,7 +63,8 @@ function App() {
               month: 'long',
               year: 'numeric'
               })}
-</div>
+            </div>
+            <div className="text-sm mb-3 tracking-widest" style={{ color: '#847c74' }}>{`${config.hour} HS`}</div>
           </div>
         </div>
       </section>
