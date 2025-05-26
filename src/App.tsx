@@ -64,7 +64,7 @@ function App() {
               year: 'numeric'
               })}
             </div>
-            <div className="text-sm mb-3 tracking-widest" style={{ color: '#847c74' }}>{`${config.hour} HS`}</div>
+            <div className="text-sm mb-2 mt-2 tracking-widest" style={{ color: '#847c74' }}>{`${config.hour} HS a 05:30 HS`}</div>
           </div>
         </div>
       </section>
